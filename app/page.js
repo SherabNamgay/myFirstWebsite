@@ -15,15 +15,5 @@ const artical=[
     ]
   }
 ]
-export default function Home() {
-  return (
-    <>
-    {artical.map( x => 
-        <Article
-        title={x.articleTitle}
-        paragraphs={x.articleParagraphs}
-        />
-    )}
-    </>
-  )
+
 }
