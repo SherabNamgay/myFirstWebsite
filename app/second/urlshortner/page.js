@@ -1,27 +1,46 @@
-"use client"
+import UrlShortner from "./components/urlshortner"
 
-import {useEffect,useState} from "react"
-
-
-export default function Home(){
-  const [userInput, setUserInput]= useState('')
-
-}
-
+const URL_LINK="https://shrtlnk.dev/api/v2/link"
+const API_KEY= process.env.API_KEY
+// var inputElement=document.getElementById("userInput")
+// var inputValue =inputElement.value
 var urlToShorten={
-  url:{userInput}
+  url:"https://www.codewars.com/kata/57a2013acf1fa5bfc4000921/solutions/javascript?filter=me&sort=best_practice&invalids=false"
+}
+async function getData() {
+	const res = await fetch(URL_LINK,{
+    method:"POST",
+    headers:{
+      "api-key": API_KEY,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(urlToShorten),
+  })
+  if (!res.ok) {
+		throw new Error('Failed to fetch data')
+	}
+
+	return res.json()
 }
 
-useEffect(() => {
-  const shortenUrl = async () => {
-    const res = await fetch(/api/urlShortner)
-    const {data} = await res.json()
-    if (data) {
-      setConfig(data)
-    }
-  }
-  shortenUrl()
-},[userInput])
+
+export default async function Home() {
+	const data = await getData()
+	console.log(data)
+	return (
+		<>
+      <UrlShortner
+     
+      />
+
+		</>
+	)
+}
+
+
+
+
 
 
 export default async function Home() {
