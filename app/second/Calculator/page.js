@@ -12,7 +12,7 @@ export default function Home() {
     }
 	
 	return (
-	<div className="text-center p-0 border-3 w-72" >
+	<div className="text-center p-0 w-72" >
         <div className="text-4xl mx-10 border-2">
             Calculator
         </div>

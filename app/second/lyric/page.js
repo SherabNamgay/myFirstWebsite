@@ -24,28 +24,29 @@ export default function home(){
         }
     } 
     return (
-        <div>
-            <div>
+        <div className="text-center">
+            <div className="text-3xl m-4">
                 <h1>Generate lyrics</h1>
             </div>
-            <div>
+            <div className="text-black grid-cols-3">
                 <input
-                    className="text-black"
+                    className="m-2 border-2 px-3 rounded-full"
                     type="text"
                     value={artist}
                     placeholder="Artist Name"
                     onChange={(event) => setArtist(event.target.value)}
                 />
                 <input
-                    className="text-black"
+                    className="m-2 border-2 px-3 rounded-full"
                     type="text"
                     value={songName}
                     placeholder="Song Name"
                     onChange={(event) => setSongName(event.target.value)}
                 />
                 <button
+                    className="m-2 border-2 px-3 rounded-full bg-sky-300"
                     onClick={getData}>Search</button>
-                <div>
+                <div className="text-white text-lg" >
                     <h2>lyrics:</h2>
                     <pre>{lyrics}</pre>
                 </div>

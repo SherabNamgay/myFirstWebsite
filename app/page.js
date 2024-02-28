@@ -62,6 +62,13 @@ export default function Home() {
             )
           })}
         </div>
+      <div>
+        <ul>
+          <li><a href="./second/calculator">calulator</a></li>
+          <li><a href="./second/lyric">lyric generator</a></li>
+          <li><a href="./second/calculator">calulator</a></li>
+        </ul>
+      </div>
     </div>
 	)
 }
