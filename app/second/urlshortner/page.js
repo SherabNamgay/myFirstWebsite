@@ -1,10 +1,32 @@
 "use client"
 
-import { useState } from "react"
+import {useEffect,useState} from "react"
 
-export default function Home() {
-	const [quotes, setQuotes] = useState([])
-	const [text, setText] = useState("Hello")
+
+export default function Home(){
+  const [userInput, setUserInput]= useState('')
+
+}
+
+var urlToShorten={
+  url:{userInput}
+}
+
+useEffect(() => {
+  const shortenUrl = async () => {
+    const res = await fetch(/api/urlShortner)
+    const {data} = await res.json()
+    if (data) {
+      setConfig(data)
+    }
+  }
+  shortenUrl()
+},[userInput])
+
+
+export default async function Home() {
+	const data = await getData()
+	console.log(data)
 	return (
     <div className="h-screen bg-cover bg-center bg-[url('/bgimage.jpg')]">
       <div className="mx-auto w-fit mt-80">
@@ -12,20 +34,19 @@ export default function Home() {
         <input
           className="text-2xl px-10 text-black mt-12 border-2 border-green-300 rounded-full bg-white hover:bg-sky-200"
           type="text"
-          value={text}
-          placeholder="Enter your text here"
+          placeholder="Enter url text here"
           onChange={(event) => {
-            setText(event.target.value)
+            setUserInput(event.target.value)
           }
         }
-       />
-       <button
+      />
+      <button
         className="h-fit w-fit text-sky-300 text-xl py-2 px-4 rounded-full absolute right-0 top-11 bottom-0"
         onClick={()=>{
           setText("")
           }
         }
-       >X</button>
+      >X</button>
         </div>
         
       
@@ -65,3 +86,7 @@ export default function Home() {
     </div>
 	)
 }
+
+
+
+
